@@ -1,8 +1,8 @@
 import torch
 from torch import nn
 
-class MultiCNN(nn.Module):
-    def __init__(self):
+class CNN(nn.Module):
+    def __init__(self, classes):
         super().__init__()
         self.conv1 = nn.Conv2d(3, 16, kernel_size=5)
         self.conv2 = nn.Conv2d(16, 48, kernel_size=3)
@@ -12,7 +12,7 @@ class MultiCNN(nn.Module):
         self.pool = nn.MaxPool2d(2, 2)
         self.fc1 = nn.Linear(2 * 2 * 64,  100)
         self.fc2 = nn.Linear(100, 24)
-        self.fc3 = nn.Linear(24, 4)
+        self.fc3 = nn.Linear(24, classes)
     
     def forward(self, x):
         h = self.pool(self.relu(self.conv1(x)))
