@@ -2,7 +2,7 @@ import torch
 from torchvision import datasets
 
 from torch.utils.data import DataLoader
-from torchvision.transforms import ToTensor, Compose
+from torchvision.transforms import ToTensor, Compose, RandomHorizontalFlip, Normalize, RandomErasing
 from PIL import Image
 import pathlib
 
@@ -10,9 +10,19 @@ from src.utils.seeds import worker_init_fn
 
 class CIFAR10Dataset(torch.utils.data.Dataset):
     def __init__(self, root='./data/', is_train=True, download=True):
-        transform = Compose([ToTensor(),])
+        if is_train:
+            self.transform =  Compose([
+                RandomHorizontalFlip(p=0.5), 
+                ToTensor(),
+                Normalize(0.5, 0.5), 
+            ])
+        else:
+            self.transform =  Compose([
+                ToTensor(),
+                Normalize(0.5, 0.5), 
+            ])
 
-        self.data = datasets.CIFAR10(root=root, train=is_train, download=download, transform=transform)
+        self.data = datasets.CIFAR10(root=root, train=is_train, download=download, transform=self.transform)
 
         self.labels_list = ['airplane', 'automobile', 'bird', 'cat', 'deer', 
                             'dog', 'frog', 'horse', 'ship', 'truck']
@@ -28,9 +38,6 @@ class CIFAR10Dataset(torch.utils.data.Dataset):
         return image, label1, label2
 
 def create_dataset(root='./data/', download=True, batch_size=64):
-
-    # train_dataset = datasets.CIFAR10(root=root, train=True, download=download, transform=ToTensor())
-    # test_dataset = datasets.CIFAR10(root=root, train=False, download=download, transform=ToTensor())
 
     train_dataset = CIFAR10Dataset(root=root, is_train=True, download=download)
     test_dataset = CIFAR10Dataset(root=root, is_train=False, download=download)
