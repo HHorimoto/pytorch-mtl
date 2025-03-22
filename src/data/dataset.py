@@ -2,7 +2,7 @@ import torch
 from torchvision import datasets
 
 from torch.utils.data import DataLoader
-from torchvision.transforms import ToTensor, Compose, RandomHorizontalFlip, Normalize, RandomErasing
+from torchvision.transforms import ToTensor, Compose, Normalize
 from PIL import Image
 import pathlib
 
@@ -11,13 +11,12 @@ from src.utils.seeds import worker_init_fn
 class CIFAR10Dataset(torch.utils.data.Dataset):
     def __init__(self, root='./data/', is_train=True, download=True):
         if is_train:
-            self.transform =  Compose([
-                RandomHorizontalFlip(p=0.5), 
+            self.transform = Compose([
                 ToTensor(),
                 Normalize(0.5, 0.5), 
             ])
         else:
-            self.transform =  Compose([
+            self.transform = Compose([
                 ToTensor(),
                 Normalize(0.5, 0.5), 
             ])

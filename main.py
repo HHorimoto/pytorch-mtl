@@ -39,7 +39,7 @@ def main():
         print('single task learning')
         model = Net(input_channel=3, num_class=10).to(device)
         loss_fn = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(model.parameters(), lr=LR)
+        optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
         coach = Coach(model, train_loader, test_loader, loss_fn, optimizer, device, EPOCHS)
 
     elif LEARNING == 'MTL':
@@ -47,7 +47,7 @@ def main():
         model = MLTNet(input_channel=3, num_class=[10, 2]).to(device)
         loss_fn1, loss_fn2 = nn.CrossEntropyLoss(), nn.CrossEntropyLoss()
         lambda1, lambda2 = 1., 1.
-        optimizer = optim.Adam(model.parameters(), lr=LR)
+        optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
         coach = MTLCoach(model, train_loader, test_loader, loss_fn1, loss_fn2,
                          lambda1, lambda2, optimizer, device, EPOCHS)
 
