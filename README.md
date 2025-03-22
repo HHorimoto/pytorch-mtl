@@ -24,10 +24,10 @@ The table below presents the results obtained from the experiments.
 
 **Accuracy Comparison**
 
-|     | Accuracy |
-| --- | :------: |
-| STL |  0.5448  |
-| MTL |  0.5636  |
+|     |  Accuracy  |
+| --- | :--------: |
+| STL |   0.5448   |
+| MTL | **0.5636** |
 
 
 #### Reference
