@@ -31,6 +31,6 @@ The table below presents the results obtained from the experiments.
 
 
 #### Reference
-[1] [https://medium.com/@aminul.huq11/multi-task-learning-a-beginners-guide-a1fc17808688]
+[1] (https://medium.com/@aminul.huq11/multi-task-learning-a-beginners-guide-a1fc17808688)[https://medium.com/@aminul.huq11/multi-task-learning-a-beginners-guide-a1fc17808688]
 
-[2] [https://github.com/machine-perception-robotics-group/MPRGDeepLearningLectureNotebook/blob/master/11_cnn_pytorch/09_multitask_fundamental.ipynb]
+[2] (https://github.com/machine-perception-robotics-group/MPRGDeepLearningLectureNotebook/blob/master/11_cnn_pytorch/09_multitask_fundamental.ipynb)[https://github.com/machine-perception-robotics-group/MPRGDeepLearningLectureNotebook/blob/master/11_cnn_pytorch/09_multitask_fundamental.ipynb]
